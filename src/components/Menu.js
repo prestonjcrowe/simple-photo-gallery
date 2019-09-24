@@ -2,8 +2,8 @@ import React from 'react';
 function Menu(props) {
 
     return (
-            <div class="Menu">
-                <a href="https://www.github.com/prestonjcrowe" target="_blank">
+            <div className="Menu">
+                <a href="https://www.github.com/prestonjcrowe" target="_blank" rel="noopener noreferrer">
                     <svg
                     className="MenuIcon"
                     role="img"
@@ -20,13 +20,14 @@ function Menu(props) {
                 <a
                     href="https://www.linkedin.com/in/please-give-me-your-data/"
                     target="_blank"
+                    rel="noopener noreferrer"
                 >
                     <svg
                     className="MenuIcon"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 455 455"
                     >
-                    <g fill-rule="evenodd" clip-rule="evenodd">
+                    <g>
                         <path d="M246.4 204.3v-.6l-.4.7h.4z" />
                         <path
                         d="M0 0v455h455V0H0zm141.5 378H74V175h67.5v203zm-33.7-230.8h-.5C84.7 147.2 70 131.6 70 112 70 92 85.1 77 108.2 77s37.3 15.2 37.8 35c0 19.6-14.7 35.2-38.2 35.2zM385 378h-67.5V269.3c0-27.2-9.8-45.9-34.2-45.9-18.7 0-29.8 12.6-34.7 24.7a46.3 46.3 0 0 0-2.2 16.5V378h-67.5s.9-184 0-203h67.5v28.7a67 67 0 0 1 60.9-33.6c44.4 0 77.7 29 77.7 91.4V378z"
@@ -34,7 +35,9 @@ function Menu(props) {
                     </g>
                     </svg>
                 </a>
-                <a href="/resume.pdf" target="_blank">
+                <a href="/resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer">
                     <svg
                     className="MenuIcon"
                     xmlns="http://www.w3.org/2000/svg"

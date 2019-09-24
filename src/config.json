@@ -1,0 +1,48 @@
+{
+    "name": "Preston Crowe",
+    "contact": "prestonjcrowe[at]gmail.com | seattle, wa",
+    "gh": "https://github.com/prestonjcrowe",
+    "li": "https://www.linkedin.com/in/please-give-me-your-data",
+    "resume": "/resume.pdf",
+    "bio": "CSE major at the UW interested in network security research, service development, and data visualization. I am passionate about privacy and enjoy breaking stuff almost as much as I enjoy building it.",
+    "tags":  [
+        "infosec",
+        "systems",
+        "web dev",
+        "api development",
+        "internal tools",
+        "data viz"
+    ],
+    "projects": [
+        {
+            "name": "Binance Orderbook",
+            "description": "A basic orderbook built on Binance's API for tracking price changes and identifying trends in crypto. This program will also compute Bollinger bands as new orders come in via Binance's websocket feeds.", 
+            "language": "go",
+            "url": "https://github.com/prestonjcrowe/binance-order-book" 
+        },
+        {
+            "name": "Goodwill Auction Bot",
+            "description": "Evil bot for snatching gamecube controllers etc. Sends me email notifications for interesting auctions on shopgoodwill.com. Also supports notifications via twitter posts and telegram.",
+            "language": "py",
+            "url": "https://github.com/prestonjcrowe/shop-goodwill-bot" 
+        },
+        {
+            "name": "Daiso Puzzle Solver",
+            "description": "This program recursively discovers all solutions to a silly little puzzle from Daiso Japan. It was developed as a practical example of recursive backtracking for my students and admittedly to satisfy my own curiosity. Toggle PRINT_PROGRESS to print intermediate board states or only solved states.",
+            "language": "c",
+            "url": "https://github.com/prestonjcrowe/daiso-solver" 
+        },
+        {
+            "name": "UNIX Write Annoyware",
+            "description": "Bug your friends and log their activity on CSE servers! With no arguments, logs active users to logs/TIMESTAMP.csv. Use the --evil flag to indefinitely spam a message to one or more target ttys.",
+            "language": "py",
+            "url": "https://github.com/prestonjcrowe/attu-fun" 
+        },
+        {
+            "name": "MTG Lifecounter Android App",
+            "description": "Rewrite of an old project just for funsies, supports 1-2 players and both Standard and EDH formats. Holding buttons increments by 5, tapping increments by 1.",
+            "language": "java",
+            "url": "https://github.com/prestonjcrowe/mtg-lifecounter" 
+        }
+    ]
+}

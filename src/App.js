@@ -1,47 +1,36 @@
 import React, { Component } from 'react';
 import Header from './components/Header.js';
-import Bio from './components/Bio.js';
-import Projects from './components/Projects.js';
-import Photography from './components/Photography.js'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Project from './components/Project.js';
 import './App.scss';
 
-class  App extends Component  {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selected: "about"
-    }
-  }
+// Import Config 
+import config from './config.json';
 
-  handleMenuClick(linkName) {
-    this.setState({selected: linkName});
-  }
+function App() {
+  const { bio, tags, projects } = config;
 
-  render() {
-    const navLinks = [
-      <Link to="/" key={0} onClick={() => this.handleMenuClick("about")}>about</Link>,
-      <Link to="/projects/" key={1} onClick={() => this.handleMenuClick("projects")}>projects</Link>,
-      <Link to="/photography/" key={5} onClick={() => this.handleMenuClick("photography")}>photography</Link>
-    ];
-  
-    return (
-      <Router>
-        <div className="App">
-          <div className="Container">
-          <Header links={navLinks} selected={this.state.selected}/>
-          <Route exact path="/" component={Bio} />
-          <Route exact path="/projects" component={Projects} />
-          <Route exact path="/photography" component={Photography} />
-  
+  return (
+      <div className="App">
+        <div className="Container">
+          <Header config={config}/>
+          <div className="Bio">{bio}</div>
+          <div className="TagContainer">
+            {
+              tags.map((tag, i) => {
+                return (<div className="Tag" key ={i}>{ tag }</div>);
+              })
+            }
           </div>
-  
+          <h3>Projects</h3>
+          {
+              projects.map((d, i) => {
+                return (<Project data={d} key ={i}/>);
+              })
+            }
         </div>
-    </Router>
-  
-  
-    );
-  }
+      </div>
+  );
 }
+
 
 export default App;

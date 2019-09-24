@@ -1,13 +1,13 @@
 import React from 'react';
 import Menu from './Menu.js';
-//bio | projects | tools | resume | interests | photography
+
 function Header(props) {
 
-    const { links, selected  } = props;
+    const { name, contact  } = props.config;
     return (
         <div className="Header">
-            <h2 className="Name">Preston Crowe</h2>
-            <h4 className="Contact">prestonjcrowe[at]gmail.com | seattle, wa</h4>
+            <h2 className="Name">{ name }</h2>
+            <h4 className="Contact">{contact }</h4>
             <Menu/>
         </div>
     );
