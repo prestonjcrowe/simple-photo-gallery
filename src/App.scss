@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+// * {
+//   font-family: 'Roboto Mono', monospace;
+// }
+
+$bg: #e7e7e7;
+$dark-bg: #e7e7e7;
+$text: #212121;
+$primary: #5a9dff;
+$secondary: #666;
+$projectLangSize: 40px;
+
+html {
+  background: $bg;
+}
+* {
+  line-height: 1.5;
+}
+.App {
+  height: 100vh;
+  width: 100vw;
+
+  background: $dark-bg;
+}
+
+.Container {
+  padding: 40px;
+  padding-top: 20px;
+  box-sizing: border-box;
+  max-width: 732px;
+  height: 100%;
+  margin: auto;
+  background: $bg;
+}
+
+.Header {
+  color: $text;
+}
+
+.Name {
+  padding: 0;
+  margin: 0;
+}
+
+.Bio {
+  color : $text;
+  font-size: 20px;
+  padding-bottom: 20px;
+
+}
+
+.Contact {
+  padding: 0;
+  margin: 0;
+}
+
+// Tag Styles
+.TagContainer {
+  margin: 0;
+  padding: 0;
+  margin-left: -6px;
+  padding-bottom: 20px;
+
+
+  .Tag {
+    background: $bg;
+    color: $text;
+    border: 1px solid $text;
+    font-size: 14px;
+    padding:  0px 4px;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 6px;
+    min-width: 50px;
+    text-align: center;
+    font-weight: normal;
+  }
+
+}
+
+// Menu Styles
+.Menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  width: fit-content;
+  padding-top: 20px;
+  grid-gap: 20px;
+
+  .MenuIcon {
+    width: 35px;
+    height: 35px;
+    fill: #e8e8e8;
+    &:hover {
+      fill: #777;
+    }
+  }
+}
+
+
+
+
+.Menu {
+  a {
+    color: $text;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .Selected {
+    * {
+      border-bottom: solid 2px $primary !important;
+    }
+  }
+
+  a:hover {
+    border-bottom: solid 2px $secondary;
+  }
+
+  .Separator {
+    display: inline;
+  }
+}
+
+// Projects Styles
+.Projects {
+
+  .Project {
+    display: grid;
+    grid-template-areas: "plang pname"
+                         ".     pdescription";
+    grid-template-columns: $projectLangSize auto;
+    grid-template-rows: $projectLangSize auto;
+    padding-bottom: 20px;
+    
+    .ProjectName {
+      color: $text;
+      font-size: 20px;
+      font-weight: 600;
+      color: $primary;
+      grid-area: pname;
+      align-self: center;
+      padding-left: 12px;
+    }
+
+    .ProjectDescription {
+      color: $text;
+      font-size: 16px;
+      grid-area: pdescription;
+      padding-left: 12px;
+
+    }
+    .ProjectLang {
+      width:$projectLangSize;
+      height:$projectLangSize;
+      border-radius:$projectLangSize;
+      font-size: 14px;
+      font-weight: bold;
+      color:$primary;
+      line-height:$projectLangSize;
+      text-align:center;
+      background:$bg;
+      border: 2px solid $primary;
+      grid-area: plang;
+
+    }
+}
+}
+
+// Resume styles
+.Resume {
+  margin: auto;
+  .ResumeLink {
+    text-transform: uppercase;
+    color: $text;
+    font-size: 30px;
+    display: inline;
+    padding: 15px;
+  }
+}
+
