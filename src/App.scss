@@ -14,6 +14,17 @@ $projectLangSize: 40px;
 html {
   background: $bg;
 }
+
+a {
+  text-decoration: none !important;
+  color: $text;
+}
+
+a:hover {
+  border-bottom: solid 2px $secondary;
+  margin-bottom: -2px;
+}
+
 * {
   line-height: 1.5;
 }
@@ -90,12 +101,9 @@ html {
   //margin: auto;
 
   .MenuIcon {
-    width: 25px;
-    height: 25px;
+    width: 24px;
+    height: 24px;
     fill: $text;
-    &:hover {
-      //fill: $secondary;
-    }
   }
 }
 
@@ -103,6 +111,9 @@ html {
 
 
 .Menu {
+  
+  padding: 8px 8px 8px 0px;
+
   a {
     color: $text;
     font-size: 18px;
@@ -116,10 +127,7 @@ html {
     }
   }
 
-  a:hover {
-    border-bottom: solid 2px $secondary;
-    margin-bottom: -2px;
-  }
+
 
   .Separator {
     display: inline;
@@ -183,3 +191,69 @@ html {
   }
 }
 
+/* Mobile Styles*/
+@media all and (max-width: 768px) {
+
+  .Container {
+    padding: 20px;
+  }
+
+  .Projects {
+    .Project {
+      .ProjectName {
+        font-size: 16px;
+      }
+
+      .ProjectDescription {
+        font-size: 14px;
+      }
+      .ProjectLang {
+        width:30px;
+        height:30px;
+        border-radius:30px;
+        font-size: 10px;
+        font-weight: bold;
+        line-height:30px;
+        background:$bg;
+      }
+    }
+  }
+  .Menu {
+    padding: 8px 8px 8px 0px;
+    .MenuIcon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .Contact {
+    font-size: 12px;
+  }
+
+  .TagContainer {
+    .Tag {
+      font-size: 12px;
+      margin: 2px;
+    }
+  }
+
+  .Bio {
+    font-size: 14px;
+    padding-bottom: 8px;
+  }
+
+  h3 {
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    padding: 20px 0 10px 0;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  
+
+
+}

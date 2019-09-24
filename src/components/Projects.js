@@ -6,7 +6,7 @@ function Projects(props) {
         <div className="Projects">
             <div className="Project">
                 <div className="ProjectLang">go</div>
-                <div className="ProjectName">binance orderbook</div>
+                <div className="ProjectName"><a href="">binance orderbook</a></div>
                 <div className="ProjectDescription">A basic orderbook built on Binance's API for tracking price changes and identifying trends in crypto. This program will also compute Bollinger bands as new orders come in via Binance's websocket feeds.</div>
             </div>
             <div className="Project">
