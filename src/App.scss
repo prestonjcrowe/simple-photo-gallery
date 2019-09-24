@@ -6,7 +6,8 @@
 $bg: #e7e7e7;
 $dark-bg: #e7e7e7;
 $text: #212121;
-$primary: #5a9dff;
+//$primary: #5a9dff;
+$primary: #212121;
 $secondary: #666;
 $projectLangSize: 40px;
 
@@ -45,7 +46,6 @@ html {
 .Bio {
   color : $text;
   font-size: 20px;
-  padding-bottom: 20px;
 
 }
 
@@ -59,7 +59,6 @@ html {
   margin: 0;
   padding: 0;
   margin-left: -6px;
-  padding-bottom: 20px;
 
 
   .Tag {
@@ -85,15 +84,17 @@ html {
   align-items: center;
   justify-items: center;
   width: fit-content;
-  padding-top: 20px;
   grid-gap: 20px;
+  padding-top: 30px;
+  //padding: 20px 0;
+  //margin: auto;
 
   .MenuIcon {
-    width: 35px;
-    height: 35px;
-    fill: #e8e8e8;
+    width: 25px;
+    height: 25px;
+    fill: $text;
     &:hover {
-      fill: #777;
+      //fill: $secondary;
     }
   }
 }
@@ -117,6 +118,7 @@ html {
 
   a:hover {
     border-bottom: solid 2px $secondary;
+    margin-bottom: -2px;
   }
 
   .Separator {
