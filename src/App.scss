@@ -5,7 +5,8 @@ $dark-bg: #e7e7e7;
 $text: #212121;
 $primary: #212121;
 $secondary: #666;
-$projectLangSize: 40px;
+
+$projectLangSize: 36px;
 
 * {
   line-height: 1.5;
@@ -34,7 +35,7 @@ a:hover {
 }
 
 .Container {
-  padding: 40px;
+  padding: 20px;
   padding-top: 20px;
   box-sizing: border-box;
   max-width: 732px;
@@ -136,7 +137,7 @@ a:hover {
   
   .ProjectName {
     color: $text;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
     color: $primary;
     grid-area: pname;
@@ -155,7 +156,7 @@ a:hover {
     width:$projectLangSize;
     height:$projectLangSize;
     border-radius:$projectLangSize;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
     color:$primary;
     line-height:$projectLangSize;
