@@ -1,36 +1,44 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap");
 
-$bg: #e7e7e7;
-$dark-bg: #e7e7e7;
-$text: #212121;
-$primary: #212121;
-$secondary: #666;
-
+// Constants
 $projectLangSize: 36px;
+
+// Default theme
+:root {
+  --bg: "#e7e7e7";
+  --text: "#212121";
+  --primary: "#212121";
+  --secondary: "#666";
+  --primary-light: "#212121";
+}
 
 * {
   line-height: 1.5;
 }
 
 html {
-  background: $bg;
+  background: var(--bg);
+}
+
+h2,
+h3 {
+  color: var(--text);
 }
 
 a {
   text-decoration: none !important;
-  color: $text;
+  color: var(--text);
 }
 
 a:hover {
-  border-bottom: solid 2px $secondary;
+  border-bottom: solid 2px var(--secondary);
   margin-bottom: -2px;
 }
-
 
 .App {
   height: 100vh;
   width: 100vw;
-  background: $dark-bg;
+  background: var(--bg);
   overflow-x: hidden;
 }
 
@@ -41,12 +49,12 @@ a:hover {
   max-width: 732px;
   height: 100%;
   margin: auto;
-  background: $bg;
+  background: var(--bg);
   overflow-x: hidden;
 }
 
 .Header {
-  color: $text;
+  color: var(--text);
 }
 
 .Name {
@@ -55,9 +63,8 @@ a:hover {
 }
 
 .Bio {
-  color : $text;
+  color: var(--text);
   font-size: 20px;
-
 }
 
 .Contact {
@@ -71,13 +78,12 @@ a:hover {
   padding: 0;
   margin-left: -6px;
 
-
   .Tag {
-    background: $bg;
-    color: $text;
-    border: 1px solid $text;
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--primary-light);
     font-size: 14px;
-    padding:  0px 4px;
+    padding: 0px 4px;
     border-radius: 4px;
     display: inline-block;
     margin: 6px;
@@ -85,7 +91,6 @@ a:hover {
     text-align: center;
     font-weight: normal;
   }
-
 }
 
 // Contact Menu Styles
@@ -101,15 +106,14 @@ a:hover {
   .MenuIcon {
     width: 24px;
     height: 24px;
-    fill: $text;
+    fill: var(--text);
   }
 }
 
 .Menu {
-  
   padding: 8px 8px 8px 0px;
   a {
-    color: $text;
+    color: var(--text);
     font-size: 18px;
     text-decoration: none;
     font-weight: 500;
@@ -117,7 +121,7 @@ a:hover {
 
   .Selected {
     * {
-      border-bottom: solid 2px $primary !important;
+      border-bottom: solid 2px var(--primary) !important;
     }
   }
 
@@ -129,49 +133,54 @@ a:hover {
 // Projects Styles
 .Project {
   display: grid;
-  grid-template-areas: "plang pname"
-                        ".     pdescription";
+  grid-template-areas:
+    "plang pname"
+    ".     pdescription";
   grid-template-columns: $projectLangSize auto;
   grid-template-rows: $projectLangSize auto;
   padding-bottom: 20px;
-  
+
   .ProjectName {
-    color: $text;
+    color: var(--text);
     font-size: 16px;
     font-weight: 600;
-    color: $primary;
     grid-area: pname;
     align-self: center;
     padding-left: 12px;
   }
 
   .ProjectDescription {
-    color: $text;
+    color: var(--text);
     font-size: 16px;
     grid-area: pdescription;
     padding-left: 12px;
-
   }
   .ProjectLang {
-    width:$projectLangSize;
-    height:$projectLangSize;
-    border-radius:$projectLangSize;
+    width: $projectLangSize;
+    height: $projectLangSize;
+    border-radius: $projectLangSize;
     font-size: 12px;
     font-weight: bold;
-    color:$primary;
-    line-height:$projectLangSize;
-    text-align:center;
-    background:$bg;
-    border: 2px solid $primary;
+    color: var(--primary);
+    line-height: $projectLangSize;
+    text-align: center;
+    background: var(--bg);
+    border: 2px solid var(--primary-light);
     grid-area: plang;
-     font-family: 'Roboto Mono', monospace;
-
+    font-family: "Roboto Mono", monospace;
   }
+}
+
+// Theme Button Styles
+.ThemeButton {
+  fill: var(--text);
+  float: right;
+  width: 30px;
+  height: 30px;
 }
 
 /* Mobile Styles*/
 @media all and (max-width: 768px) {
-
   .Container {
     padding: 20px;
   }
@@ -186,13 +195,13 @@ a:hover {
         font-size: 14px;
       }
       .ProjectLang {
-        width:30px;
-        height:30px;
-        border-radius:30px;
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
         font-size: 10px;
         font-weight: bold;
-        line-height:30px;
-        background:$bg;
+        line-height: 30px;
+        background: var(--bg);
       }
     }
   }
@@ -225,9 +234,11 @@ a:hover {
     padding: 0;
     margin: 0;
     padding: 20px 0 10px 0;
+    color: var(--text) !important;
   }
 
   h2 {
     font-size: 18px;
+    color: var(--text) !important;
   }
 }

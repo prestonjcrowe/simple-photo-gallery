@@ -1,0 +1,16 @@
+{
+    "light": {
+        "--bg": "#e7e7e7",
+        "--text": "#212121",
+        "--primary": "#212121",
+        "--secondary": "#666",
+        "--primary-light": "#212121"
+    },
+    "dark": {
+        "--bg": "#1d1d1d",
+        "--text": "#e7e7e7",
+        "--primary": "#e7e7e7",
+        "--secondary": "#666",
+        "--primary-light": "#5f5f5f"
+    }
+}

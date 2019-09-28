@@ -1,0 +1,43 @@
+// dark
+.theme-wrapper {
+    --bg: #212121;
+    --dark-bg:#212121;
+    --text:#e7e7e7;
+    --primary:#e7e7e7;
+    --secondary:#666;
+    --primary-light:rgb(95, 95, 95);
+}
+
+// light
+.theme-light {
+    --bg: #e7e7e7;
+    --dark-bg: #e7e7e7;
+    --text: #212121;
+    --primary: #212121;
+    --secondary: #666;
+    --primary-light: $primary;
+}
+
+$bg: #212121;
+$dark-bg: #212121;
+$text: #e7e7e7;
+$primary: #e7e7e7;
+$secondary: #666;
+$primary-light: rgb(95, 95, 95);
+
+// pass variables into a sass map
+$variables: (
+    --cardColor: var(--cardColor),
+    --cardBackground: var(--cardBackground),
+    --buttonColor: var(--buttonColor),
+    --buttonBackground: var(--buttonBackground),
+    --navColor: var(--navColor),
+    --navBackground: var(--navBackground),
+    --footerColor: var(--footerColor),
+    --footerBackground: var(--footerBackground),
+    --footerAlignment: var(--footerAlignment)
+);
+
+// function that accepts 'light' or 'dark'
+// sets the css variables to the appropriate values
+// this happens in react
