@@ -77,6 +77,7 @@ a:hover {
   margin: 0;
   padding: 0;
   margin-left: -6px;
+  padding-bottom: 20px;
 
   .Tag {
     background: var(--bg);
@@ -102,6 +103,7 @@ a:hover {
   width: fit-content;
   grid-gap: 20px;
   padding-top: 30px;
+  padding-bottom: 20px !important;
 
   .MenuIcon {
     width: 24px;
