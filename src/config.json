@@ -4,9 +4,10 @@
     "gh": "https://github.com/prestonjcrowe",
     "li": "https://www.linkedin.com/in/please-give-me-your-data",
     "resume": "/resume.pdf",
-    "bio": "CSE major at the UW interested in network security research, service development, and data visualization. I am passionate about privacy and enjoy breaking stuff almost as much as I enjoy building it.",
+    "bio": "CSE major at the UW interested in network security research, service development, and data visualization. I am passionate about privacy and enjoy building stuff almost as much as I enjoy breaking it.",
     "tags":  [
         "infosec",
+        "automation",
         "systems",
         "web dev",
         "api development",
@@ -15,26 +16,38 @@
     ],
     "projects": [
         {
-            "name": "Binance Orderbook",
-            "description": "A basic orderbook built on Binance's API for tracking price changes and identifying trends in crypto. This program will also compute Bollinger bands as new orders come in via Binance's websocket feeds.", 
-            "language": "go",
-            "url": "https://github.com/prestonjcrowe/binance-order-book" 
-        },
-        {
             "name": "Goodwill Auction Bot",
-            "description": "Evil bot for snatching gamecube controllers etc. Sends me email notifications for interesting auctions on shopgoodwill.com. Also supports notifications via twitter posts and telegram.",
+            "description": "Python bot for sniping gamecube controllers, VHS tapes and more on shopgoodwill.com. Sends me email notifications for interesting auctions. Also supports notifications via twitter posts and telegram. Easily customizable.",
             "language": "py",
             "url": "https://github.com/prestonjcrowe/shop-goodwill-bot" 
         },
         {
+            "name": "Binance Order Book",
+            "description": "An implementation of an cryptocurrency oder book built on Binance's API . Listens to Binance's websocket feeds to replicate their order book and compute Bollinger bands in real time.", 
+            "language": "go",
+            "url": "https://github.com/prestonjcrowe/binance-order-book" 
+        },
+        {
+            "name": "This Website",
+            "description": "Meta! This website is built with React and SASS and is hosted on an Amazon EC2 instance. All of the content on this page comes from a static config file (src/config.json), so if you like it feel free to clone the project and customize to your liking.",
+            "language": "js",
+            "url": "https://github.com/prestonjcrowe/prestoncrowe.com"
+        },
+        {
+            "name": "Riemann Sums Visualization",
+            "description": "A tool for educators and students to visualize Riemann sums; the foundation of integral calculus. Use the slider to change n and click the values above the graph to toggle Left, Right, and Trapezoidal sums. Open the menu by clicking the icon in the bottom right or by pressing space.", 
+            "language": "js",
+            "url": "https://riemann-sums.github.io" 
+        },
+        {
             "name": "Daiso Puzzle Solver",
-            "description": "This program recursively discovers all solutions to a silly little puzzle from Daiso Japan. It was developed as a practical example of recursive backtracking for my students and admittedly to satisfy my own curiosity. Toggle PRINT_PROGRESS to print intermediate board states or only solved states.",
+            "description": "This program recursively discovers all solutions to a silly little puzzle from Daiso Japan. It was developed as a practical example of recursive backtracking for my students and admittedly to satisfy my own curiosity.",
             "language": "c",
             "url": "https://github.com/prestonjcrowe/daiso-solver" 
         },
         {
             "name": "UNIX Write Annoyware",
-            "description": "Bug your friends and log their activity on CSE servers! With no arguments, logs active users to logs/TIMESTAMP.csv. Use the --evil flag to indefinitely spam a message to one or more target ttys.",
+            "description": "Bug your friends and log their activity on CSE servers by abusing the write command! With no arguments, logs active users to logs/TIMESTAMP.csv. Use the --evil flag to indefinitely spam a message to one or more target ttys.",
             "language": "py",
             "url": "https://github.com/prestonjcrowe/attu-fun" 
         },
