@@ -8,7 +8,7 @@ import './App.scss';
 import config from './config.json';
 import themes from './themes.json';
 
-const DEFAULT_THEME = 'dark';
+const DEFAULT_THEME = 'light';
 
 class App extends Component {
   constructor(props) {
