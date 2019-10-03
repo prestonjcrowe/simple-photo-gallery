@@ -55,22 +55,24 @@ class App extends Component {
     return (
         <div className="App">
           <div className="Container">
-            <ThemeButton theme={theme} toggleTheme={this.toggleTheme}/>
-            <Header config={config}/>
-            <div className="Bio">{bio}</div>
-            <div className="TagContainer">
+            <div className="Content">
+              <ThemeButton theme={theme} toggleTheme={this.toggleTheme}/>
+              <Header config={config}/>
+              <div className="Bio">{bio}</div>
+              <div className="TagContainer">
+                {
+                  tags.map((tag, i) => {
+                    return (<div className="Tag" key ={i}>{ tag }</div>);
+                  })
+                }
+              </div>
+              <h3>Projects</h3>
               {
-                tags.map((tag, i) => {
-                  return (<div className="Tag" key ={i}>{ tag }</div>);
-                })
-              }
+                  projects.map((d, i) => {
+                    return (<Project data={d} key ={i}/>);
+                  })
+                }
             </div>
-            <h3>Projects</h3>
-            {
-                projects.map((d, i) => {
-                  return (<Project data={d} key ={i}/>);
-                })
-              }
           </div>
         </div>
     );

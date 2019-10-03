@@ -40,9 +40,10 @@ a:hover {
   width: 100vw;
   background: var(--bg);
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 
-.Container {
+.Content {
   padding: 20px;
   padding-top: 20px;
   box-sizing: border-box;
