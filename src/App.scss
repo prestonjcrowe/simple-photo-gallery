@@ -40,7 +40,6 @@ a:hover {
   width: 100vw;
   background: var(--bg);
   overflow-x: hidden;
-  overflow-y: scroll;
 }
 
 .Content {
@@ -52,6 +51,7 @@ a:hover {
   margin: auto;
   background: var(--bg);
   overflow-x: hidden;
+
 }
 
 .Header {
