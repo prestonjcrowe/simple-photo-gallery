@@ -23,7 +23,7 @@
         },
         {
             "name": "Binance Order Book",
-            "description": "An cryptocurrency oder book built on Binance's API . Listens to Binance's websocket feeds to replicate their order book and compute Bollinger bands in real time.", 
+            "description": "A cryptocurrency oder book built on Binance's API . Listens to Binance's websocket feeds to replicate their order book and compute Bollinger bands in real time.", 
             "language": "go",
             "url": "https://github.com/prestonjcrowe/binance-order-book" 
         },
