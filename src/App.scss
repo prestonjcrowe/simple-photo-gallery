@@ -185,7 +185,7 @@ a:hover {
 /* Mobile Styles*/
 @media all and (max-width: 768px) {
   .Container {
-    padding: 20px;
+    padding: 10px;
   }
 
   .Projects {
@@ -198,12 +198,12 @@ a:hover {
         font-size: 14px;
       }
       .ProjectLang {
-        width: 30px;
-        height: 30px;
-        border-radius: 30px;
-        font-size: 10px;
+        width: 24px;
+        height: 24px;
+        border-radius: 24px;
+        font-size: 8px;
         font-weight: bold;
-        line-height: 30px;
+        line-height: 24px;
         background: var(--bg);
       }
     }
