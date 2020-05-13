@@ -1,33 +1,30 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400&display=swap');
 
-// Constants
-$projectLangSize: 36px;
 
-// Default theme
-:root {
-  --bg: "#e7e7e7";
-  --text: "#212121";
-  --primary: "#212121";
-  --secondary: "#666";
-  --primary-light: "#212121";
+.GalleryTitle {
+  color: white;
+  font-size: 20px;
+  font-family: 'Source Code Pro', monospace;
+  padding-left: 6px;
+}
+
+.GallerySubTitle {
+  color: white;
+  font-size: 14px;
+  padding-bottom: 10px;
+  font-family: 'Source Code Pro', monospace;
+  padding-left: 6px;
+
 }
 
 * {
   line-height: 1.5;
 }
 
-html {
-  background: var(--bg);
-}
-
-h2,
-h3 {
-  color: var(--text);
-}
 
 a {
   text-decoration: none !important;
-  color: var(--text);
+  color: #d66061;
 }
 
 a:hover {
@@ -38,210 +35,29 @@ a:hover {
 .App {
   height: 100vh;
   width: 100vw;
-  background: var(--bg);
+  background: #212121;
   overflow-x: hidden;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  
+    -ms-overflow-style: none;
 }
 
 .Content {
   padding: 20px;
   padding-top: 20px;
   box-sizing: border-box;
-  max-width: 732px;
+  // max-width: 732px;
   height: 100%;
   margin: auto;
-  background: var(--bg);
   overflow-x: hidden;
-
 }
 
-.Header {
-  color: var(--text);
-}
-
-.Name {
-  padding: 0;
-  margin: 0;
-}
-
-.Bio {
-  color: var(--text);
-  font-size: 20px;
-}
-
-.Contact {
-  padding: 0;
-  margin: 0;
-}
-
-// Tag Styles
-.TagContainer {
-  margin: 0;
-  padding: 0;
-  margin-left: -6px;
-  padding-bottom: 20px;
-
-  .Tag {
-    background: var(--bg);
-    color: var(--text);
-    border: 1px solid var(--primary-light);
-    font-size: 14px;
-    padding: 0px 4px;
-    border-radius: 4px;
-    display: inline-block;
-    margin: 6px;
-    min-width: 50px;
-    text-align: center;
-    font-weight: normal;
-  }
-}
-
-// Contact Menu Styles
-.Menu {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-  justify-items: center;
-  width: fit-content;
-  grid-gap: 20px;
-  padding-top: 30px;
-  padding-bottom: 20px !important;
-
-  .MenuIcon {
-    width: 24px;
-    height: 24px;
-    fill: var(--text);
-  }
-}
-
-.Menu {
-  padding: 8px 8px 8px 0px;
-  a {
-    color: var(--text);
-    font-size: 18px;
-    text-decoration: none;
-    font-weight: 500;
-  }
-
-  .Selected {
-    * {
-      border-bottom: solid 2px var(--primary) !important;
-    }
-  }
-
-  .Separator {
-    display: inline;
-  }
-}
-
-// Projects Styles
-.Project {
-  display: grid;
-  grid-template-areas:
-    "plang pname"
-    ".     pdescription";
-  grid-template-columns: $projectLangSize auto;
-  grid-template-rows: $projectLangSize auto;
-  padding-bottom: 20px;
-
-  .ProjectName {
-    color: var(--text);
-    font-size: 16px;
-    font-weight: 600;
-    grid-area: pname;
-    align-self: center;
-    padding-left: 12px;
-  }
-
-  .ProjectDescription {
-    color: var(--text);
-    font-size: 16px;
-    grid-area: pdescription;
-    padding-left: 12px;
-  }
-  .ProjectLang {
-    width: $projectLangSize;
-    height: $projectLangSize;
-    border-radius: $projectLangSize;
-    font-size: 12px;
-    font-weight: bold;
-    color: var(--primary);
-    line-height: $projectLangSize;
-    text-align: center;
-    background: var(--bg);
-    border: 2px solid var(--primary-light);
-    grid-area: plang;
-    font-family: "Roboto Mono", monospace;
-  }
-}
-
-// Theme Button Styles
-.ThemeButton {
-  fill: var(--text);
-  float: right;
-  width: 30px;
-  height: 30px;
-}
 
 /* Mobile Styles*/
 @media all and (max-width: 768px) {
   .Container {
     padding: 10px;
-  }
-
-  .Projects {
-    .Project {
-      .ProjectName {
-        font-size: 16px;
-      }
-
-      .ProjectDescription {
-        font-size: 14px;
-      }
-      .ProjectLang {
-        width: 24px;
-        height: 24px;
-        border-radius: 24px;
-        font-size: 8px;
-        font-weight: bold;
-        line-height: 24px;
-        background: var(--bg);
-      }
-    }
-  }
-  .Menu {
-    padding: 8px 8px 8px 0px;
-    .MenuIcon {
-      width: 20px;
-      height: 20px;
-    }
-  }
-
-  .Contact {
-    font-size: 12px;
-  }
-
-  .TagContainer {
-    .Tag {
-      font-size: 12px;
-      margin: 2px;
-    }
-  }
-
-  .Bio {
-    font-size: 14px;
-    padding-bottom: 8px;
-  }
-
-  h3 {
-    font-size: 16px;
-    padding: 0;
-    margin: 0;
-    padding: 20px 0 10px 0;
-    color: var(--text) !important;
-  }
-
-  h2 {
-    font-size: 18px;
-    color: var(--text) !important;
   }
 }

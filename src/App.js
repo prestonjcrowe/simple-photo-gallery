@@ -1,80 +1,55 @@
-import React, { Component } from 'react';
-import Header from './components/Header.js';
-import Project from './components/Project.js';
-import ThemeButton from './components/ThemeButton.js';
-import './App.scss';
+import React, { Component } from "react";
+import PhotoGallery from "./components/PhotoGallery.js";
+import "./App.scss";
 
-// Import config and themes
-import config from './config.json';
-import themes from './themes.json';
-
-const DEFAULT_THEME = 'light';
+const INDEX_URL = "https://pcrowe-photography.s3.amazonaws.com/index.json";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      theme: DEFAULT_THEME
-    }
-
-    this.toggleTheme = this.toggleTheme.bind(this);
-    this.setTheme = this.setTheme.bind(this);
+      photos: [],
+    };
   }
 
   componentDidMount() {
-    const theme = localStorage.getItem('theme');
-    if (theme && (theme === 'dark' || theme === 'light')) {
-      this.setTheme(theme);
-    } else {
-      this.setTheme(DEFAULT_THEME);
-    }
-  }
+    fetch(INDEX_URL)
+      .then((res) => res.json())
+      .then((json) => {
+        let photos = json
+          .map((p) => ({
+            src: p.url,
+            width: p.w,
+            height: p.h,
+            title: p.caption,
+            date: p.date,
+          }))
+          .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  setTheme(theme) {
-    this.setState({theme: theme});
-  
-    Object.keys(themes[theme]).map(key => {
-      const value = themes[theme][key];
-      document.documentElement.style.setProperty(key, value);
-      localStorage.setItem('theme', theme)
-      return null;
-    });
-  }
-
-  toggleTheme() {
-    const oldTheme = this.state.theme;
-    const newTheme =  oldTheme === 'dark' ? 'light' : 'dark';
-  
-    this.setTheme(newTheme);
+        this.setState({ photos: photos });
+      });
   }
 
   render() {
-    const { bio, tags, projects } = config;
-    const { theme } = this.state;
-  
     return (
-        <div className="App">
-          <div className="Container">
-            <div className="Content">
-              <ThemeButton theme={theme} toggleTheme={this.toggleTheme}/>
-              <Header config={config}/>
-              <div className="Bio">{bio}</div>
-              <div className="TagContainer">
-                {
-                  tags.map((tag, i) => {
-                    return (<div className="Tag" key ={i}>{ tag }</div>);
-                  })
-                }
-              </div>
-              <h3>Projects</h3>
-              {
-                  projects.map((d, i) => {
-                    return (<Project data={d} key ={i}/>);
-                  })
-                }
+      <div className="App">
+        <div className="Container">
+          <div className="Content">
+            <div className="GalleryTitle">photography</div>
+            <div className="GallerySubTitle">
+              <a
+                rel="noopener noreferrer"
+                target="_blank"
+                href="https://www.prestoncrowe.com"
+              >
+                preston crowe
+              </a>{" "}
+              takes photos
             </div>
+            <PhotoGallery photos={this.state.photos} />
           </div>
         </div>
+      </div>
     );
   }
 }
