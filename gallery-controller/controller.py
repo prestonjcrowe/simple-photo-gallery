@@ -26,6 +26,7 @@ def main():
     document = []
     print('Uploading all images in root directory "%s" to S3' % ROOT_DIR)
     for subdir, dirs, files in os.walk(ROOT_DIR):
+        print('Uploading images all in "%s" to S3' % subdir)
         for file in progressbar.progressbar(files):
             if (not is_image(file)):
                 continue
@@ -51,7 +52,7 @@ def main():
             except ClientError as e:
                 print(e)
 
-    print(json.dumps(document))
+    print('Uploading index file %s to S3' % INDEX_FILE)
     S3_CLIENT.put_object(Body=json.dumps(document),
                          Bucket=BUCKET, Key=INDEX_NAME, ACL='public-read')
 
