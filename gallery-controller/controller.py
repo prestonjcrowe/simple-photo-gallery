@@ -18,7 +18,7 @@ INDEX_NAME = 'index.json'
 def is_image(fp):
     return (fp.endswith('.png') or fp.endswith('.jpg') or
             fp.endswith('.PNG') or fp.endswith('.JPG') or
-            fp.endswith('.JPEG'))
+            fp.endswith('.JPEG') or fp.endswith('.jpeg'))
 
 
 def main():
@@ -52,7 +52,7 @@ def main():
             except ClientError as e:
                 print(e)
 
-    print('Uploading index file %s to S3' % INDEX_FILE)
+    print('Uploading index file %s to S3' % INDEX_NAME)
     S3_CLIENT.put_object(Body=json.dumps(document),
                          Bucket=BUCKET, Key=INDEX_NAME, ACL='public-read')
 
