@@ -24,7 +24,7 @@ class App extends Component {
             title: p.caption,
             date: p.date,
           }))
-          .sort((a, b) => new Date(a.date) - new Date(b.date));
+          .sort((a, b) => new Date(b.date) - new Date(a.date));
 
         this.setState({ photos: photos });
       });

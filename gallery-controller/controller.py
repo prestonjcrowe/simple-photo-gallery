@@ -1,7 +1,23 @@
-# thanks to igracia on stackoverflow for the creation_date function
+# Simple S3 Photo Gallery Controller
+
+# This script uploads a set of images to S3 as well as an index file containing
+# metadata about the images (folder name, date, width, height, public URL). The
+# expected folder hierarchy is as follows:
+#
+# ROOT_DIR/
+#   - travel photos | 01/01/2005
+#       - photo1.png
+#       - another_photo.jpg
+#   - seattle | 01/01/1970
+#       - ...
+#   - ...
+#
+# Feel free to change the date format as well as the delimiting character ('|'
+# by default) in config.json.
 
 from PIL import Image
 import os
+import sys
 import platform
 from datetime import datetime
 import boto3
@@ -9,30 +25,35 @@ from botocore.exceptions import ClientError
 import json
 import progressbar
 
-BASE_URL = "https://pcrowe-photography.s3.amazonaws.com/"
-ROOT_DIR = "./images"
-BUCKET = 'pcrowe-photography'
-S3_CLIENT = boto3.client('s3')
-INDEX_NAME = 'index.json'
-
-def is_image(fp):
-    return (fp.endswith('.png') or fp.endswith('.jpg') or
-            fp.endswith('.PNG') or fp.endswith('.JPG') or
-            fp.endswith('.JPEG') or fp.endswith('.jpeg'))
-
-
 def main():
 
+    # Parse config file...
+    config = parse_config()
+    BASE_URL = config['base_url']
+    ROOT_DIR =config['root_dir']
+    BUCKET = config['bucket']
+    INDEX_NAME = config['index_name']
+    DATE_FORMAT = config['date_format']
+    DELIMITER = config['delmiter']
+
+    # Establish connection to S3
+    S3_CLIENT = boto3.client('s3')
+
+    # Lint check folder hierarchy
+    validate_formatting(ROOT_DIR, DATE_FORMAT, DELIMITER)
+
     document = []
-    print('Uploading all images in root directory "%s" to S3' % ROOT_DIR)
-    for subdir, dirs, files in os.walk(ROOT_DIR):
-        print('Uploading images all in "%s" to S3' % subdir)
+    print('[+] Uploading all images in root directory {} to S3' .format(ROOT_DIR))
+
+    for subdir, _, files in os.walk(ROOT_DIR):
         for file in progressbar.progressbar(files):
             if (not is_image(file)):
                 continue
             filepath = os.path.join(subdir, file)
-            caption = subdir[len(ROOT_DIR)+1:]
-            cd = creation_date(filepath)
+            subdir_name = subdir[len(ROOT_DIR)+1:]
+            caption = subdir_name
+            date = datetime.strptime(subdir_name.split(
+                DELIMITER)[1].strip(), DATE_FORMAT)
             im = Image.open(filepath)
             w, h = im.size
             key = caption + '/' + file
@@ -41,38 +62,89 @@ def main():
                 'caption': caption,
                 'w': w,
                 'h': h,
-                'date': cd,
+                'date': date.strftime(DATE_FORMAT),
                 'url': BASE_URL + key
             }
             document.append(metadata)
-            # push to s3 here
+            upload_image(S3_CLIENT, filepath, BUCKET, key)
+
+    upload_index(S3_CLIENT, document, INDEX_NAME, BUCKET)
+
+def parse_config():
+    with open("config.json", 'r') as config:
+        return json.load(config)
+
+def is_image(fp):
+    return (fp.endswith('.png') or fp.endswith('.jpg') or
+            fp.endswith('.PNG') or fp.endswith('.JPG') or
+            fp.endswith('.JPEG') or fp.endswith('.jpeg'))
+
+def upload_index(client, doc, index_name, bucket):
+    print('[+] Uploading index file {} to S3...'.format(index_name))
+    try:
+        client.put_object(Body=json.dumps(doc),
+                             Bucket=bucket, Key=index_name, ACL='public-read')
+        print('[+] Successfully uploaded index file to S3')
+    except ClientError as e:
+        print("[-] Error uploading index file to S3, please check your connection config")
+        sys.exit(e)
+
+def upload_image(client, fp, bucket, key):
+    try:
+        client.upload_file(fp, bucket, key, ExtraArgs={'ACL': 'public-read'})
+    except ClientError as e:
+        print("[-] Error uploading images to S3, please check your connection config")
+        sys.exit(e)
+
+def validate_formatting(root_dir, date_format, delimiter):
+    image_count = 0
+    errors = []
+
+    print("[+] Checking format of root directory {}...".format(root_dir))
+    for subdir, _, files in os.walk(root_dir):
+        for file in files:
+            if (not is_image(file)):
+                continue
+
+            filepath = os.path.join(subdir, file)
+
+            caption = subdir[len(root_dir)+1:]
+            date = caption.split('|')
+
+            if len(date) == 1:
+                if caption not in errors:
+                    errors.append(caption)
+                    print(
+                        "[-] Incorrect folder name format in directory: {}".format(caption))
+
+                continue
+            else:
+                try:
+                    date = datetime.strptime(date[1].strip(), date_format)
+                except:
+                    if caption not in errors:
+                        errors.append(caption)
+                        print(
+                            "[-] Incorrect date format in directory: {}".format(caption))
             try:
-                res = S3_CLIENT.upload_file(
-                    filepath, BUCKET, key, ExtraArgs={'ACL': 'public-read'})
-            except ClientError as e:
-                print(e)
+                Image.open(filepath)
+            except:
+                print(
+                    "[-] Error retrieving width and height from image {}".format(filepath))
+                errors.append(filepath)
+                continue
 
-    print('Uploading index file %s to S3' % INDEX_NAME)
-    S3_CLIENT.put_object(Body=json.dumps(document),
-                         Bucket=BUCKET, Key=INDEX_NAME, ACL='public-read')
+            image_count += 1
 
+    err_symbol = '+' if len(errors) == 0 else '-'
+    print("[{}] Found {} images with {} errors".format(
+        err_symbol, image_count, len(errors)))
+    if (len(errors) > 0):
+        print(
+            "[-] Valid folder names are formatted as: NAME {} {}".format(delimiter, date_format))
+        sys.exit("[-] Please fix the formatting errors and try again")
 
-def creation_date(path_to_file):
-    """
-    Try to get the date that a file was created, falling back to when it was
-    last modified if that isn't possible.
-    See http://stackoverflow.com/a/39501288/1709587 for explanation.
-    """
-    if platform.system() == 'Windows':
-        return os.path.getctime(path_to_file)
-    else:
-        stat = os.stat(path_to_file)
-        try:
-            return stat.st_birthtime
-        except AttributeError:
-            # We're probably on Linux. No easy way to get creation dates here,
-            # so we'll settle for when its content was last modified.
-            return stat.st_mtime
+    return True
 
 
 if __name__ == "__main__":

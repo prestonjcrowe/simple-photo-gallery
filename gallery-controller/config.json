@@ -1,0 +1,8 @@
+{
+    "base_url": "https://pcrowe-photography.s3.amazonaws.com/",
+    "root_dir": "./images",
+    "bucket": "pcrowe-photography",
+    "index_name": "index.json",
+    "date_format": "%m-%d-%Y",
+    "delmiter": "|"
+}
