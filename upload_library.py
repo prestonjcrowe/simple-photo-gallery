@@ -1,4 +1,4 @@
-# Simple S3 Photo Gallery Controller
+# S3 Photo Library Controller
 
 # This script uploads a set of images to S3 as well as an index file containing
 # metadata about the images (folder name, date, width, height, public URL). The
@@ -11,9 +11,6 @@
 #   - seattle | 01/01/1970
 #       - ...
 #   - ...
-#
-# Feel free to change the date format as well as the delimiting character ('|'
-# by default) in config.json.
 
 from PIL import Image
 import os
