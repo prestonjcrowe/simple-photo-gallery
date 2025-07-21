@@ -2,6 +2,8 @@
 
 Mimimalist photo gallery web app built with Vue and Amazon S3. All images are uploaded to S3 along with a JSON document detailing their size, date, and other metadata. The front end then accesses this file and uses it as a directory to load the images and render the gallery view. You can see a live version at [photos.prestoncrowe.com](https://photos.prestoncrowe.com).
 
+![gallery component screenshot](./screenshot.png)
+
 ## Getting Started
 
 You must have AWS credentials in `~/.aws/credentials` in order to connect to S3

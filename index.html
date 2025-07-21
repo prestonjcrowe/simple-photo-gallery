@@ -232,12 +232,12 @@
           const openLightbox = (index) => {
             currentPhotoIndex.value = index;
             lightboxOpen.value = true;
-            document.body.style.overflow = "hidden"; // Prevent scrolling when lightbox is open
+            document.body.style.overflow = "hidden";
           };
 
           const closeLightbox = () => {
             lightboxOpen.value = false;
-            document.body.style.overflow = ""; // Restore scrolling
+            document.body.style.overflow = "";
           };
 
           const currentPhoto = computed(() => {
@@ -273,7 +273,6 @@
             window.addEventListener("keydown", handleKeyDown);
           });
 
-          // Clean up event listener when component is unmounted (though for a single page app, this is less critical)
           Vue.onUnmounted(() => {
             window.removeEventListener("keydown", handleKeyDown);
           });
